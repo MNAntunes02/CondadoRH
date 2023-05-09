@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faFacebook, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'condado-front';
+  faLinkedinIn = faLinkedinIn;
+  faFacebook = faFacebook;
+  faInstagram = faInstagram;
+
 }
