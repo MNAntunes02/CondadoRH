@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0",
-    "build": "ng build --base-href=\"https://mnantunes02.github.io/CondadoRH\"",
+    "build": "ng build --base-href=\"https://mnantunes02.github.io/condadorh/\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
