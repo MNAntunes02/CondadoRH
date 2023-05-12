@@ -1,54 +1,61 @@
-<header class="flex justify-between items-center w-full p-4 poppins border-b-2 fixed bg-white z-50 lg:px-44">
-  <h1 class="text-2xl font-bold text-dark cursor-pointer" routerLink="">
-    Condado<span class="text-primary">RH</span>
-  </h1>
-  <div class="lg:hidden">
-    <button mat-icon-button color="primary" [matMenuTriggerFor]="Menu">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <mat-menu  #Menu="matMenu" xPosition="before">
-      <button mat-menu-item routerLink="">Inicio</button>
-      <button mat-menu-item routerLink="sobre-nos">Sobre Nós</button>
-      <!-- <button mat-menu-item routerLink="">Serviços</button> -->
-      <button mat-menu-item routerLink="vagas">Vagas</button>
-      <button mat-menu-item routerLink="clientes">Clientes</button>
-    </mat-menu>
-  </div>
-  <div class="hidden lg:block">
-    <div class="dm-sans flex gap-12">
-      <button routerLink="home" routerLinkActive="active">Inicio</button>
-      <button routerLink="sobre-nos" routerLinkActive="active">Sobre Nós</button>
-      <!-- <button routerLink="">Serviços</button> -->
-      <button routerLink="vagas" routerLinkActive="active">Vagas</button>
-      <button routerLink="clientes" routerLinkActive="active">Clientes</button>
-    </div>
-  </div>
-</header>
-
-
-
-
-
-<router-outlet></router-outlet>
-
-
-
-
-<footer class="py-16 px-6 bg-primary flex flex-col lg:flex-row lg:justify-between lg:items-center lg:px-44 lg:py-8">
-  <div>
-    <h1 class="text-2xl font-bold text-dark poppins">
-      Condado<span class="text-purple-50">RH</span>
+<mat-drawer-container class="h-full" autosize>
+  <header class="flex justify-between items-center w-full p-4 poppins border-b-2 fixed bg-white z-50 lg:px-44">
+    <h1 class="text-2xl font-bold text-dark cursor-pointer" routerLink="">
+      Condado<span class="text-primary">RH</span>
     </h1>
-    <div class="flex flex-col text-purple-50 dm-sans pt-8 pb-8 lg:pb-0 gap-3">
-      <span>©2023 Condado.</span>
-      <span>Todos os direitos reservados.</span>
+    <div class="lg:hidden">
+      <button mat-icon-button color="primary" (click)="drawer.toggle()" >
+        <mat-icon>menu</mat-icon>
+      </button>
     </div>
-  </div>
-  <div class="flex gap-10">
-    <a target="_blank" href="https://www.instagram.com/condadorh/"><fa-icon class="text-purple-50 text-2xl" [icon]="faInstagram"></fa-icon></a>
-    <a target="_blank" href="https://pt-br.facebook.com/"><fa-icon class="text-purple-50 text-2xl" [icon]="faFacebook"></fa-icon></a> <!--sem link por enquanto-->
-    <a target="_blank" href="https://www.linkedin.com/company/condado-rh/"><fa-icon class="text-purple-50 text-2xl" [icon]="faLinkedinIn"></fa-icon></a>
-  </div>
-</footer>
+    <div class="hidden lg:block">
+      <div class="dm-sans flex gap-12">
+        <button routerLink="home" routerLinkActive="active">Inicio</button>
+        <button routerLink="sobre-nos" routerLinkActive="active">Sobre Nós</button>
+        <button routerLink="vagas" routerLinkActive="active">Vagas</button>
+        <button routerLink="clientes" routerLinkActive="active">Clientes</button>
+      </div>
+    </div>
+  </header>
 
 
+
+
+
+  <router-outlet></router-outlet>
+
+
+
+
+  <footer class="py-16 px-6 bg-primary flex flex-col lg:flex-row lg:justify-between lg:items-center lg:px-44 lg:py-8">
+    <div>
+      <h1 class="text-2xl font-bold text-dark poppins">
+        Condado<span class="text-purple-50">RH</span>
+      </h1>
+      <div class="flex flex-col text-purple-50 dm-sans pt-8 pb-8 lg:pb-0 gap-3">
+        <span>©2023 Condado.</span>
+        <span>Todos os direitos reservados.</span>
+      </div>
+    </div>
+    <div class="flex gap-10">
+      <a target="_blank" href="https://www.instagram.com/condadorh/"><fa-icon class="text-purple-50 text-2xl" [icon]="faInstagram"></fa-icon></a>
+      <a target="_blank" href="https://pt-br.facebook.com/"><fa-icon class="text-purple-50 text-2xl" [icon]="faFacebook"></fa-icon></a> <!--sem link por enquanto-->
+      <a target="_blank" href="https://www.linkedin.com/company/condado-rh/"><fa-icon class="text-purple-50 text-2xl" [icon]="faLinkedinIn"></fa-icon></a>
+    </div>
+  </footer>
+
+
+
+  <mat-drawer #drawer mode="over" position="end">
+    <div class="flex flex-col justify-center items-center dm-sans p-16 gap-16 text-lg">
+      <button mat-menu-item (click)="drawer.toggle()" routerLinkActive="active" routerLink="home">Inicio</button>
+      <button mat-menu-item (click)="drawer.toggle()" routerLinkActive="active" routerLink="sobre-nos">Sobre Nós</button>
+      <button mat-menu-item (click)="drawer.toggle()" routerLinkActive="active" routerLink="vagas">Vagas</button>
+      <button mat-menu-item (click)="drawer.toggle()" routerLinkActive="active" routerLink="clientes">Clientes</button>
+    </div>
+    <div (click)="drawer.toggle()" routerLink="/login" class="w-full flex justify-center items-center absolute bottom-10 dm-sans text-lg gap-5 text-gray-400">
+      <fa-icon  class="text-2xl" [icon]="faUserCircle"></fa-icon><span>Fazer login</span>
+    </div>
+  </mat-drawer>
+
+</mat-drawer-container>

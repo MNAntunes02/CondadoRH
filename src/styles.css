@@ -12,10 +12,14 @@
     font-family: 'DM Sans', sans-serif;
 }
 
+.roboto{
+    font-family: 'Roboto', sans-serif;
+}
+
 html, body { height: 100%; }
 body { 
     margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
-    @apply overflow-x-hidden;
+    /* @apply overflow-x-hidden; */
 }
 
 body::-webkit-scrollbar-thumb{

@@ -9,26 +9,40 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SobreVagaComponent } from './dialog/sobre-vaga/sobre-vaga.component';
+import { CandidaturaEfetuadaComponent } from './dialog/candidatura-efetuada/candidatura-efetuada.component';
+import { DepoimentoComponent } from './components/depoimento/depoimento.component';
 
 
 
 @NgModule({
   declarations: [
-    VagaComponent
+    VagaComponent,
+    SobreVagaComponent,
+    CandidaturaEfetuadaComponent,
+    DepoimentoComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatDialogModule
   ],
   exports:[
     VagaComponent,
+    SobreVagaComponent,
+    CandidaturaEfetuadaComponent,
+    DepoimentoComponent,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
     MatInputModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule,
+    MatSidenavModule
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,29 @@
+<section class="w-full h-auto pt-40 pb-20 lg:py-52">
+    <div class="mx-auto flex flex-col gap-4 px-10 lg:w-1/3">
+        <div class="w-full h-full flex flex-col justify-center items-center gap-4">
+            <form action="">
+                <mat-form-field class="w-full">
+                    <mat-label>Login</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Senha</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <a href="" class="dm-sans font-medium text-zinc-400">Esqueci minha senha</a>
+            </form>
+        </div>
+        <div class="flex justify-center text-zinc-400 divide-y-2 w-full items-center gap-5"> <div class="w-full h-0 border border-zinc-300"></div> ou <div class="w-full h-0 border border-zinc-300"></div> </div>
+        <div class="w-full h-full flex flex-col justify-center items-center gap-4 pt-8">
+            <div class="flex gap-6 p-2 px-3 bg-[#007AB6] rounded drop-shadow justify-center items-center roboto font-medium text-white hover:bg-sky-700 cursor-pointer">
+                <fa-icon [icon]="faLinkedin" class="text-xl"></fa-icon>
+                <span>Fazer login com LinkedIn</span>
+            </div>
+            <div class="flex gap-6 p-2 px-3 bg-white rounded drop-shadow justify-center items-center roboto font-medium text-zinc-500 hover:bg-zinc-50 cursor-pointer">
+                <img src="../../../assets/g-logo.png" alt="" class="w-5 h-5">
+                <span>Fazer login com Google</span>
+            </div>
+            <a routerLink="/cadastro" class="pt-5 dm-sans font-medium text-zinc-400">Me cadastrar</a>
+        </div>
+    </div>
+</section>
