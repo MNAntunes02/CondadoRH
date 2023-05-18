@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "condado-front": {
+      "hosting": {
+        "condadorh": [
+          "condado-front"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "condado-front"
+  }
+}
