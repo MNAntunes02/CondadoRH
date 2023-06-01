@@ -4,25 +4,26 @@
             <div>
                 <div class="pb-7">
                     <p class="pb-1">Cargo</p>
-                    <p class="font-black">{{ cargo }}</p>
+                    <p class="font-black">{{ vaga.cargo }}</p>
                 </div>
                 <div class="pb-7">
                     <p class="pb-1">Localidade</p>
-                    <p class="font-black">{{ localidade }}</p>
+                    <p class="font-black">{{ vaga.localidade }}</p>
                 </div>
             </div>
-            <div class="absolute right-10 text-xl">
-                <fa-icon (click)="share()" [icon]="faShareSquare" class="text-primary"></fa-icon>
+            <div class="absolute right-10 text-xl cursor-pointer">
+                <fa-icon *ngIf="salvo == false" (click)="salvarVaga()" [icon]="faHeart" class="text-primary"></fa-icon>
+                <fa-icon *ngIf="salvo == true" (click)="salvarVaga()" [icon]="faHeartCircleCheck" class="text-primary"></fa-icon>
             </div>
         </div>
         <div class="flex">
             <div class="w-1/2 pb-7">
                 <p class="pb-1">Disponibilidade</p>
-                <p class="font-black">{{ disponibilidade }}</p>
+                <p class="font-black">{{ vaga.disponibilidade }}</p>
             </div>
             <div class="w-1/2 pb-7">
                 <p class="pb-1">Modalidade</p>
-                <p class="font-black text-primary" >{{ modalidade }}</p>
+                <p class="font-black text-primary" >{{ vaga.modalidade }}</p>
             </div>
         </div>
         <button (click)="openSobreVaga()" class="w-full justify-center flex bg-second p-3 px-5 rounded font-black text-white">

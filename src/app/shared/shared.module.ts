@@ -14,6 +14,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { SobreVagaComponent } from './dialog/sobre-vaga/sobre-vaga.component';
 import { CandidaturaEfetuadaComponent } from './dialog/candidatura-efetuada/candidatura-efetuada.component';
 import { DepoimentoComponent } from './components/depoimento/depoimento.component';
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+import { ColorSnackbarPipe } from './pipes/color-snackbar.pipe';
+import { SalvarVagaPipe } from './pipes/salvar-vaga.pipe';
+import { BlobSvgComponent } from './components/blob-svg/blob-svg.component';
 
 
 
@@ -22,7 +26,11 @@ import { DepoimentoComponent } from './components/depoimento/depoimento.componen
     VagaComponent,
     SobreVagaComponent,
     CandidaturaEfetuadaComponent,
-    DepoimentoComponent
+    DepoimentoComponent,
+    SnackBarComponent,
+    ColorSnackbarPipe,
+    SalvarVagaPipe,
+    BlobSvgComponent
   ],
   imports: [
     CommonModule,
@@ -35,14 +43,8 @@ import { DepoimentoComponent } from './components/depoimento/depoimento.componen
     SobreVagaComponent,
     CandidaturaEfetuadaComponent,
     DepoimentoComponent,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    MatInputModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatSidenavModule
+    BlobSvgComponent,
+    MaterialModule
   ]
 })
 export class SharedModule { }

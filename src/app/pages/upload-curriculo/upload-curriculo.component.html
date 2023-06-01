@@ -1,0 +1,28 @@
+<section class="w-full overflow-hidden relative pb-20 pt-36 px-6 lg:px-44 text-center">
+    <div class="flex flex-col dm-sans">
+        <h3 class="poppins font-bold text-3xl pb-4">Atualizar Currículo</h3>
+        <span class="pb-8 dm-sans">
+            Envie o curriculo para melhores oportunidades.
+        </span>
+    </div>
+
+    <form class="lg:grid lg:w-1/2 lg:gap-x-10 mx-auto" [formGroup]="formulario">
+
+        <label>
+            <div class="w-full p-4 rounded text-primary dm-sans font-bold flex gap-2 items-center justify-center border-dashed border-2 border-primary cursor-pointer h-52"
+                [ngClass]="text == 'Upload Currículo' ? 'bg-base text-primary' : 'bg-primary text-white'" >
+                <fa-icon [icon]="faUpload"></fa-icon>
+                {{text}}
+            </div>
+            <input type="file" name="curriculo" id="curriculo" class="hidden" (change)="showFile(file)" (change)="event = $event" formControlName="curriculo" #file>
+        </label>
+        
+        <button class="w-full justify-center items-center flex bg-primary p-3 px-5 rounded font-bold text-white mt-3 dm-sans disabled:bg-opacity-70"
+                (click)="uploadCurriculo()"
+                [disabled]="text == 'Upload Currículo'">
+            Enviar
+        </button>
+
+    </form>
+
+</section>

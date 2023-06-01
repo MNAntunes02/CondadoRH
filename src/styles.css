@@ -5,7 +5,9 @@
 @tailwind utilities;
 
 .poppins {
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'DM Serif Display', serif;
+    letter-spacing: 0.04rem;
 }
 
 .dm-sans{
@@ -14,6 +16,10 @@
 
 .roboto{
     font-family: 'Roboto', sans-serif;
+}
+
+.dm_serif_display{
+    font-family: 'DM Serif Display', serif;
 }
 
 html, body { height: 100%; }
@@ -31,3 +37,38 @@ body::-webkit-scrollbar{
     width: 10px;
 }
 
+.red-snackbar {
+    background-color: #d61313;
+    font-weight: 600;
+}
+
+.green-snackbar {
+    background-color: #31ad12;
+    font-weight: 600;
+}
+
+.floating { 
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.floating-reverse { 
+    animation-name: floating-reverse;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+ 
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 10px); }
+    100%   { transform: translate(0, -0px); }   
+}
+
+@keyframes floating-reverse {
+    0% { transform: translate(0,  10px); }
+    50%  { transform: translate(0, 0px); }
+    100%   { transform: translate(0, 10px); }   
+}

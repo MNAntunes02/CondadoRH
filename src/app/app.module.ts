@@ -20,6 +20,16 @@ import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
+import { AuthService } from './pages/login/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './guard/auth.guard';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { VerificarEmailComponent } from './pages/verificar-email/verificar-email.component';
+import { UploadCurriculoComponent } from './pages/upload-curriculo/upload-curriculo.component';
+import { ServicosComponent } from './pages/servicos/servicos.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +38,10 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     VagasComponent,
     CadastroComponent,
     ClientesComponent,
-    LoginComponent
+    LoginComponent,
+    VerificarEmailComponent,
+    UploadCurriculoComponent,
+    ServicosComponent
   ],
   imports: [
     BrowserModule,
@@ -36,13 +49,17 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     BrowserAnimationsModule,
     SharedModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
   ],
   providers: [
-    ScreenTrackingService,UserTrackingService
+    ScreenTrackingService,UserTrackingService,AuthService,AuthGuard
   ],
   bootstrap: [AppComponent]
 })
