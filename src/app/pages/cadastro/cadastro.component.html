@@ -125,7 +125,7 @@
             <input type="file" name="curriculo" id="curriculo" class="hidden" (change)="showFile(file)" #file>
         </label>
 
-        <button class="w-full justify-center items-center flex bg-primary p-3 px-5 rounded font-bold text-white mt-3 dm-sans disabled:bg-second" 
+        <button class="w-full justify-center items-center flex bg-primary p-3 px-5 rounded font-bold text-white mt-3 dm-sans disabled:bg-second disabled:cursor-not-allowed" 
                 [disabled]="!(senha.value == confirmar.value) || senha.value == '' || email.value == ''" 
                 (click)="registrarUsuario()"
                 >

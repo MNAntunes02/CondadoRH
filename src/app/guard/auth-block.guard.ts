@@ -22,8 +22,9 @@ export class AuthBlockGuard {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    if(this.auth.currentUser?.uid !== null){
-      return this.router.createUrlTree(['/login']);
+    if(this.auth.currentUser?.uid !== null && this.auth.currentUser?.emailVerified == true){
+      this.router.navigate(['/home']);
+      return false;
     }else{
       return true;
     }

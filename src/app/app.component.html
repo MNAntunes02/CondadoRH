@@ -1,11 +1,8 @@
-<mat-drawer-container class="h-full" autosize>
-  <header class="flex justify-between items-center w-full p-4 poppins border-b-2 fixed z-50 lg:px-44 drop-shadow-lg bg-white">
-    <!-- <h1 class="text-2xl font-bold text-dark cursor-pointer flex items-center" routerLink="">
-      Condado<span class="text-primary">RH</span>
-    </h1> -->
+<section class="h-full scroll-smooth">
+  <header class="flex justify-between items-center w-full p-4 border-b-2 fixed z-30 lg:px-44 drop-shadow-lg bg-white">
     <img src="./assets/logo/logo_sug.svg" alt="logo Condado RH" class="h-10 cursor-pointer" routerLink="">
     <div class="lg:hidden">
-      <button mat-icon-button color="primary" (click)="drawer.toggle()" >
+      <button mat-icon-button color="primary" (click)="openSidenav()" >
         <mat-icon>menu</mat-icon>
       </button>
     </div>
@@ -25,8 +22,8 @@
       </div>
       <div *ngIf="currentName !== null" 
             mat-button [matMenuTriggerFor]="beforeMenu" 
-            class="flex justify-center items-center dm-sans gap-4 cursor-pointer">
-        <span>{{primeiroNome + " " + resto[0]}}</span>
+            class="flex justify-center items-center dm-sans font-semibold gap-4 cursor-pointer text-dark">
+        <span>{{primeiroNome}}</span>
         <div class="w-8 h-8 rounded-full overflow-hidden">
           <img *ngIf="currentPhoto !== null && currentPhoto !== '' && currentPhoto !== 'null'" [src]="currentPhoto" alt="" class="w-full h-full">
           <div *ngIf="currentPhoto == null || currentPhoto == '' || currentPhoto == 'null'" class="w-full h-full bg-primary"></div>
@@ -47,12 +44,9 @@
 
   <footer class="py-16 px-6 bg-primary flex flex-col lg:flex-row lg:justify-between lg:items-center lg:px-44 lg:py-8">
     <div>
-      <!-- <h1 class="text-2xl font-bold text-dark poppins">
-        Condado<span class="text-purple-50">RH</span>
-      </h1> -->
       <img src="./assets/logo/logo_sug_negative.svg" alt="logo negativa Condado RH" class="h-10 cursor-pointer" routerLink="">
       <div class="flex flex-col text-purple-50 dm-sans pt-8 pb-8 lg:pb-0 gap-3">
-        <span>©2023 Condado.</span>
+        <span>©2023 Condado RH.</span>
         <span>Todos os direitos reservados.</span>
       </div>
     </div>
@@ -63,43 +57,49 @@
     </div>
   </footer>
 
+</section>
 
 
-  <mat-drawer #drawer mode="over" position="end">
-    <div class="flex flex-col justify-center items-center dm-sans p-16 gap-16 text-lg text-center">
-      <button (click)="drawer.toggle()" routerLinkActive="active" routerLink="home">Inicio</button>
-      <button (click)="drawer.toggle()" routerLinkActive="active" routerLink="sobre-nos">Sobre Nós</button>
-      <button (click)="drawer.toggle()" routerLinkActive="active" routerLink="vagas">Vagas</button>
-      <!-- <button (click)="drawer.toggle()" routerLinkActive="active" routerLink="clientes">Clientes</button> -->
-      <button (click)="drawer.toggle()" routerLinkActive="active" routerLink="servicos">Serviços</button>
-    </div>
-    <div *ngIf="currentName == null" (click)="drawer.toggle()" routerLink="/login" class="w-full flex justify-center items-center absolute bottom-10 dm-sans text-lg gap-5 text-gray-400 cursor-pointer">
-      <fa-icon  class="text-2xl" [icon]="faUserCircle"></fa-icon><span>Fazer login</span>
-    </div>
-    <div *ngIf="currentName !== null" 
-          mat-button [matMenuTriggerFor]="beforeMenu"
-          class="w-full flex justify-center items-center absolute bottom-10 dm-sans text-lg gap-3 text-gray-400 cursor-pointer">
-      <div class="w-8 h-8 rounded-full bg-primary overflow-hidden text-lg">
-        <img  *ngIf="currentPhoto !== null && currentPhoto !== '' && currentPhoto !== 'null'" 
-              [src]="currentPhoto" 
-              alt="" 
-              class="w-full h-full"
-        >
-        <div  *ngIf="currentPhoto == null || currentPhoto == '' || currentPhoto == 'null'" 
-              class="w-full h-full bg-primary">
-        </div>
+<section  class="fixed h-full top-0 bg-white z-50 right-0 duration-200 ease-in translate-x-56"
+          [ngClass]="{'open-sidenav': sidenav}">
+  <div class="flex flex-col justify-center items-center dm-sans p-16 gap-16 text-lg text-center">
+    <button (click)="closeSidenav()" routerLinkActive="active" routerLink="home">Inicio</button>
+    <button (click)="closeSidenav()" routerLinkActive="active" routerLink="sobre-nos">Sobre Nós</button>
+    <button (click)="closeSidenav()" routerLinkActive="active" routerLink="vagas">Vagas</button>
+    <!-- <button (click)="closeSidenav()" routerLinkActive="active" routerLink="clientes">Clientes</button> -->
+    <button (click)="closeSidenav()" routerLinkActive="active" routerLink="servicos">Serviços</button>
+  </div>
+  <div *ngIf="currentName == null" (click)="closeSidenav()" routerLink="/login" class="w-full flex justify-center items-center absolute bottom-10 dm-sans text-lg gap-5 text-gray-400 cursor-pointer">
+    <fa-icon  class="text-2xl" [icon]="faUserCircle"></fa-icon><span>Fazer login</span>
+  </div>
+  <div *ngIf="currentName !== null" 
+        mat-button [matMenuTriggerFor]="beforeMenu"
+        class="w-full flex justify-center items-center absolute bottom-10 dm-sans text-lg gap-3 text-dark cursor-pointer">
+    <div class="w-8 h-8 rounded-full bg-primary overflow-hidden text-lg">
+      <img  *ngIf="currentPhoto !== null && currentPhoto !== '' && currentPhoto !== 'null'" 
+            [src]="currentPhoto" 
+            alt="" 
+            class="w-full h-full"
+      >
+      <div  *ngIf="currentPhoto == null || currentPhoto == '' || currentPhoto == 'null'" 
+            class="w-full h-full bg-primary">
       </div>
-      <span>{{primeiroNome + " " + resto[0]}}</span>
     </div>
-    <mat-menu #beforeMenu="matMenu" 
-              xPosition="before"
-              class="dm-sans">
-      <button (click)="drawer.toggle()" routerLink="/upload-curriculo" class="w-full py-3">Atualizar Currículo</button>
-      <button (click)="drawer.toggle()" (click)="logout()" class="w-full font-medium text-red-600 py-3 flex gap-3">
-        LogOut 
-        <fa-icon [icon]="faRightFromBracket"></fa-icon>
-      </button>
-    </mat-menu>
-  </mat-drawer>
+    <span>{{primeiroNome + " " + resto[0]}}</span>
+  </div>
+  <mat-menu #beforeMenu="matMenu" 
+            xPosition="before"
+            class="dm-sans">
+    <button (click)="closeSidenav()" routerLink="/upload-curriculo" class="w-full py-3">Atualizar Currículo</button>
+    <button (click)="closeSidenav()" (click)="logout()" class="w-full font-medium text-red-600 py-3 flex gap-3">
+      LogOut 
+      <fa-icon [icon]="faRightFromBracket"></fa-icon>
+    </button>
+  </mat-menu>
+</section>
 
-</mat-drawer-container>
+<section  class="fixed top-0 left-0 bg-black bg-opacity-50 w-full h-full z-40 hidden"
+          [ngClass]="{'open-back': sidenav}"
+          (click)="closeSidenav()" #backdrop>
+
+</section>

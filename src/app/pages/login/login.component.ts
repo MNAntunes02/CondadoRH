@@ -44,6 +44,7 @@ export class LoginComponent {
   //Logar com Email e Senha
   async fazerlogin(){
     await this.authService.login(this.formulario.value);
+    location.reload();
   }
 
   //Logar com o Google

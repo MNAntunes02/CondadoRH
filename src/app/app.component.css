@@ -5,3 +5,11 @@
 .snackbar{
     @apply bg-green-700;
 }
+
+.open-sidenav{
+    @apply translate-x-0 block ease-out;
+}
+
+.open-back{
+    @apply block;
+}

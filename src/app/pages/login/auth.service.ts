@@ -34,12 +34,12 @@ export class AuthService {
   }
 
   // abrir snackbar
-  openSnackBar(message: string) {
+  openSnackBar(message: string, classColor:  string) {
     this._snackBar.open(message , '' , {
       duration: 4000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
-      panelClass: 'red-snackbar'
+      panelClass: classColor
     });
   }
 
@@ -49,7 +49,13 @@ export class AuthService {
   }
 
   // registrar usuario no localstorage
-  usuarioLogado(){
+  async usuarioLogado(){
+    // this.fireauth.authState.subscribe(
+      
+    // )
+
+    // console.log(this.fireauth.authState)
+
     let usu = localStorage[this.LS_CHAVE]
     return (usu ? JSON.parse(localStorage[this.LS_CHAVE]) : null)
   }
@@ -61,7 +67,7 @@ export class AuthService {
       localStorage.setItem('name', JSON.stringify(res.user?.displayName));
       localStorage.setItem('email', JSON.stringify(res.user?.email));
       this.router.navigate(['']);
-      this.openSnackBar("Usuario logado com sucesso!")
+      this.openSnackBar("Usuario logado com sucesso!", "blue-snackbar")
 
     //salvar informação no firestore
     const usuarios = collection(this.firestore,'usuarios')
@@ -74,50 +80,48 @@ export class AuthService {
     })
 
     }, err => {
-      this.openSnackBar("Erro ao logar com Google")
+      this.openSnackBar("Erro ao logar com Google", "red-snackbar")
     })
   }
 
   // login com email e senha
   async login( usuario: Usuario ) {
-    await this.fireauth.signInWithEmailAndPassword(usuario.email,usuario.senha).then( res => {
+    await this.fireauth.signInWithEmailAndPassword(usuario.email,usuario.senha).then(async res => {
       if(res.user?.emailVerified == true) {
           localStorage.setItem('photo', JSON.stringify(res.user?.photoURL));
           localStorage.setItem('name', JSON.stringify(res.user?.displayName));
           localStorage.setItem('email', JSON.stringify(res.user?.email));
-          this.router.navigate(['/home']);
-          this.openSnackBar("Usuario logado com sucesso!");
+          await this.router.navigate(['/home']);
+          this.openSnackBar("Usuario logado com sucesso!", "blue-snackbar");
         } else {
-          this.router.navigate(['/verificar-email']);
+          await this.router.navigate(['/verificar-email']);
         }
-      }, err => {
-        this.openSnackBar("Erro ao tentar logar");
-        this.router.navigate(['/login']);
+      },async err => {
+        this.openSnackBar("Erro ao tentar logar", "red-snackbar");
+        await this.router.navigate(['/login']);
     })
   }
 
   // sign out
-  logout() {
-    this.fireauth.signOut().then( () => {
+  async logout() {
+    await this.fireauth.signOut().then( () => {
       localStorage.removeItem('token');
       localStorage.removeItem('photo');
       localStorage.removeItem('name');
       localStorage.removeItem('email');
     }, err => {
-      this.openSnackBar("Erro ao fazer logout")
+      this.openSnackBar("Erro ao fazer logout", "red-snackbar")
     })
   }
   
   // registrar email e senha
   register( usuario:UsuarioCompleto ) {
     this.fireauth.createUserWithEmailAndPassword( usuario.email, usuario.senha).then( async res => {
-      //notificação de sucesso
-      this.openSnackBar("Registro realizado com sucesso!")
-
+      
       //atualizar nome do usuario no authentication
       const auth = getAuth();
       if(auth.currentUser !== null){
-        updateProfile( auth.currentUser , {displayName:usuario.nome} )
+        await updateProfile( auth.currentUser , {displayName:usuario.nome} )
       }
 
       //salvar informação no firestore
@@ -129,45 +133,46 @@ export class AuthService {
         photo: "",
         curriculoID:""
       })
-
+      
       //mandar email de verificação
       this.sendEmailForVarification(res.user);
-
+      
       //voltar a tela de login caso registrado
-      this.router.navigate(['/login']);
-
-    }, err => {
+      await this.router.navigate(['/login']);
+      
+      //notificação de sucesso
+      this.openSnackBar("Registro realizado com sucesso!", "blue-snackbar")
+    },async err => {
       alert(err.message);
-      this.router.navigate(['/cadastro']);
+      await this.router.navigate(['/cadastro']);
     })
   }
 
   // esqueceu a senha
   forgotPassword(email : string) {
-    this.fireauth.sendPasswordResetEmail(email).then(() => {
-      this.router.navigate(['/verificar-email']);
+    this.fireauth.sendPasswordResetEmail(email).then(async() => {
+      await this.router.navigate(['/verificar-email']);
     }, err => {
-      this.openSnackBar("Digite email valido!");
+      this.openSnackBar("Digite email valido!", "red-snackbar");
     })
   }
   
   // verificar email
   sendEmailForVarification(user : any) {
-    user.sendEmailVerification().then((res : any) => {
-      this.router.navigate(['/verificar-email']);
+    user.sendEmailVerification().then(async (res:any) => {
+      await this.router.navigate(['/verificar-email']);
     }, (err : any) => {
-      this.openSnackBar("Algo deu errado. Não é possível enviar e-mail para o seu e-mail.");
+      this.openSnackBar("Algo deu errado. Não é possível enviar e-mail para o seu e-mail.", "red-snackbar");
     })
   }
   
 
   // salvar curriculo no Storage
-  // criar id de referencia no firestore do usuario especifico
   uploadCurriculo(fileRoute:File, fileName:string){
     
     const auth = getAuth();
-    const user = auth.currentUser;
     const storage = getStorage();
+    const user = auth.currentUser;
     const storageRef = ref(storage, fileName);    
     
     uploadBytes(storageRef, fileRoute).then(async (snapshot) => {
@@ -175,20 +180,20 @@ export class AuthService {
       const usuarios = collection(this.firestore,'usuarios')
       // const token = localStorage.getItem("token")
       // const docUsuario = query(usuarios, where("email", "==", user?.email));
-
+      
+      // cria id de referencia no firestore do usuario especifico
       if (user?.uid !== null) {
         const docRef = doc(usuarios, user?.uid);
-        const docSnap = await getDoc(docRef);
         await updateDoc(docRef, {
           curriculoID: snapshot.ref.fullPath
         })
       }
 
-      this.openSnackBar("Curriculo atualizado com sucesso!");
-      this.router.navigate(['/home']);
+      this.openSnackBar("Curriculo atualizado com sucesso!", "blue-snackbar");
+      await this.router.navigate(['/home']);
 
     },(e) => {
-      this.openSnackBar("Algo deu errado, tente novamente mais tarde");
+      this.openSnackBar("Algo deu errado, tente novamente mais tarde", "red-snackbar");
     });
 
   }

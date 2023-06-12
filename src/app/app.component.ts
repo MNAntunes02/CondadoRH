@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { faFacebook, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faRightFromBracket, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from './pages/login/auth.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { getAuth } from '@angular/fire/auth';
+import { Firestore, collection, doc, getDoc } from '@angular/fire/firestore';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +19,7 @@ export class AppComponent {
   faInstagram = faInstagram;
   faUserCircle = faUserCircle;
   faRightFromBracket = faRightFromBracket;
+  sidenav = false;
 
   currentToken:string|null = null;
   currentPhoto:string|null = null;
@@ -25,12 +29,31 @@ export class AppComponent {
 
   constructor(
     private authService: AuthService,
+    private firestore: Firestore,
     private router: Router
   ){
-    this.getInfoLocalStorage();
+
+    AOS.init();
+    window.addEventListener('load', AOS.refresh)
+
+    this.router.events.subscribe((event) => {
+      if (!(event instanceof NavigationEnd)) {
+          return;
+      }
+      window.scrollTo(0, 0)
+    });
+
+    this.getInfoLocalStorage().then(()=> {
+      console.log('')  
+    },(e) => {
+      authService.openSnackBar('Algo deu errado, tente logar mais tarde!', "red-snackbar");
+    });
+    this.authService.usuarioLogado()
+
+    console.log(this.currentPhoto)
   }
 
-  getInfoLocalStorage(){
+  async getInfoLocalStorage(){
     this.currentToken = localStorage.getItem('token');
     this.currentPhoto = localStorage.getItem('photo');
     this.currentName = localStorage.getItem('name');
@@ -42,16 +65,17 @@ export class AppComponent {
     }
   }
 
-  logout(){
-    this.authService.logout();
+  async logout(){
+    await this.authService.logout();
     location.reload();
   }
-
-
-  redirectToCadastro(){
-    this.router.navigate(['/cadastro']);
+  
+  closeSidenav(){
+    this.sidenav = false
   }
-
-
+  
+  openSidenav(){
+    this.sidenav = true
+  }
 
 }

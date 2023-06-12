@@ -4,3 +4,17 @@
     background-position: center;
     background-size: cover;
 }
+
+.kamilla-bg{
+    background-image: url(../../../assets/Kamilla.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+
+.juslene-bg{
+    background-image: url(../../../assets/Juslene.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+}

@@ -17,11 +17,11 @@ const routes: Routes = [
   {path: "home", component: HomeComponent},
   {path: "sobre-nos", component: SobreComponent},
   {path: "vagas", component: VagasComponent},
-  {path: "cadastro", component: CadastroComponent },
+  {path: "cadastro", component: CadastroComponent, canActivate: [AuthBlockGuard]},
   {path: "upload-curriculo", component: UploadCurriculoComponent, canActivate: [AuthGuard]},
   // {path: "clientes", component: ClientesComponent},
   {path: "servicos", component: ServicosComponent},
-  {path: "login", component: LoginComponent},
+  {path: "login", component: LoginComponent, canActivate: [AuthBlockGuard]},
   {path: "verificar-email", component: VerificarEmailComponent},
   {path: "**" , redirectTo: "home"}
 ];

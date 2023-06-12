@@ -39,20 +39,20 @@ export class AuthGuard {
   //   return true;
   // }
 
-  canDeactivate(
-    component: unknown,
-    currentRoute: ActivatedRouteSnapshot,
-    currentState: RouterStateSnapshot,
-    nextState?: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  // canDeactivate(
+  //   component: unknown,
+  //   currentRoute: ActivatedRouteSnapshot,
+  //   currentState: RouterStateSnapshot,
+  //   nextState?: RouterStateSnapshot
+  // ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    if(this.authservice.statusAuth() === true){
-      this.router.navigate(['/home'])
-      return true;
-    }else{
-      return false
-    }
-  }
+  //   if(this.authservice.statusAuth() === true){
+  //     this.router.navigate(['/home'])
+  //     return true;
+  //   }else{
+  //     return false
+  //   }
+  // }
 
   // canMatch(
   //   route: Route,

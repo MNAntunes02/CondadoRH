@@ -4,6 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body { height: 100%; }
+body { 
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    /* @apply overflow-x-hidden; */
+}
+
+body::-webkit-scrollbar-thumb{
+    @apply bg-primary rounded-lg w-[2px];
+}
+
+
+body::-webkit-scrollbar{
+    @apply w-[10px] bg-second;
+}
+
 .poppins {
     /* font-family: 'Poppins', sans-serif; */
     font-family: 'DM Serif Display', serif;
@@ -22,21 +37,6 @@
     font-family: 'DM Serif Display', serif;
 }
 
-html, body { height: 100%; }
-body { 
-    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
-    /* @apply overflow-x-hidden; */
-}
-
-body::-webkit-scrollbar-thumb{
-    @apply bg-primary rounded-lg w-[2px];
-}
-
-
-body::-webkit-scrollbar{
-    width: 10px;
-}
-
 .red-snackbar {
     background-color: #d61313;
     font-weight: 600;
@@ -49,16 +49,24 @@ body::-webkit-scrollbar{
 
 .floating { 
     animation-name: floating;
-    animation-duration: 3s;
+    animation-duration: 8s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
 }
 
 .floating-reverse { 
     animation-name: floating-reverse;
-    animation-duration: 3s;
+    animation-duration: 8s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
+}
+
+.card-float-primary{
+    @apply w-full h-full bg-primary rounded absolute z-10 lg:left-8 lg:top-8 left-4 top-4 floating;
+}
+
+.card-float-second{
+    @apply w-full h-full bg-second rounded absolute bg-opacity-30 lg:-left-8 lg:-top-8 -left-4 -top-4 floating-reverse;
 }
  
 @keyframes floating {
@@ -71,4 +79,17 @@ body::-webkit-scrollbar{
     0% { transform: translate(0,  10px); }
     50%  { transform: translate(0, 0px); }
     100%   { transform: translate(0, 10px); }   
+}
+
+.mat-mdc-snack-bar-container {
+    &.blue-snackbar {
+      --mdc-snackbar-container-color: #4D3EFC;
+      --mat-mdc-snack-bar-button-color: #fff;
+      --mdc-snackbar-supporting-text-color: #fff;
+    }
+    &.red-snackbar {
+        --mdc-snackbar-container-color: #dd2f2f;
+        --mat-mdc-snack-bar-button-color: #fff;
+        --mdc-snackbar-supporting-text-color: #fff;
+    }
 }

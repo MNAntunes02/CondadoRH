@@ -4,7 +4,7 @@ COLORS = {
   'dark': '#130F3D',
   'primary': '#4D3EFC',
   'second': '#8C83ED',
-  'base': '#F6FCFF'
+  'light': '#F6FCFF'
 }
 
 module.exports = {

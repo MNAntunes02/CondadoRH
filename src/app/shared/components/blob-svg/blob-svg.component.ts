@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class BlobSvgComponent {
 
-  @Input() color:string = 'base';
+  @Input() color:string = 'primary';
 
   colorRGB:string = ""
 
