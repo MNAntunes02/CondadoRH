@@ -7,7 +7,6 @@ import { GoogleAuthProvider , updateProfile , getAuth  } from '@angular/fire/aut
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UsuarioCompleto } from 'src/app/interface/usuario-completo';
 import { MatSnackBar } from '@angular/material/snack-bar';
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import { Firestore, collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from '@angular/fire/firestore';
 
@@ -50,12 +49,6 @@ export class AuthService {
 
   // registrar usuario no localstorage
   async usuarioLogado(){
-    // this.fireauth.authState.subscribe(
-      
-    // )
-
-    // console.log(this.fireauth.authState)
-
     let usu = localStorage[this.LS_CHAVE]
     return (usu ? JSON.parse(localStorage[this.LS_CHAVE]) : null)
   }
@@ -69,19 +62,33 @@ export class AuthService {
       this.router.navigate(['']);
       this.openSnackBar("Usuario logado com sucesso!", "blue-snackbar")
 
-    //salvar informação no firestore
-    const usuarios = collection(this.firestore,'usuarios')
-    const document = doc(usuarios , res.user?.uid);
-    await setDoc(document, {
-      nome:res.user?.displayName,
-      email:res.user?.email,
-      photoURL:res.user?.photoURL,
-      curriculoID:""
-    })
+      const usuarios = collection(this.firestore,'usuarios')
+      const document = doc(usuarios , res.user?.uid);
+      const uids = this.listarUIDsColecao(usuarios)
+
+      if (!(await uids).includes(res.user?.uid)) {        
+        await setDoc(document, {
+          nome:res.user?.displayName,
+          email:res.user?.email,
+          photoURL:res.user?.photoURL,
+          curriculoID:""
+        })
+      }
 
     }, err => {
       this.openSnackBar("Erro ao logar com Google", "red-snackbar")
     })
+  }
+
+  async listarUIDsColecao(minhaColecao: any) {
+    const querySnapshot = await getDocs(minhaColecao);
+    const uids: any[] = [];
+  
+    querySnapshot.forEach((doc) => {
+      uids.push(doc.id);
+    });
+  
+    return uids;
   }
 
   // login com email e senha
@@ -173,13 +180,11 @@ export class AuthService {
     const auth = getAuth();
     const storage = getStorage();
     const user = auth.currentUser;
-    const storageRef = ref(storage, fileName);    
+    const storageRef = ref(storage, auth.currentUser?.displayName+''+fileName);    
     
     uploadBytes(storageRef, fileRoute).then(async (snapshot) => {
       
       const usuarios = collection(this.firestore,'usuarios')
-      // const token = localStorage.getItem("token")
-      // const docUsuario = query(usuarios, where("email", "==", user?.email));
       
       // cria id de referencia no firestore do usuario especifico
       if (user?.uid !== null) {

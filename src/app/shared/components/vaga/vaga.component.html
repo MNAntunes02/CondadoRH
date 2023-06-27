@@ -1,4 +1,4 @@
-<div class="flex flex-col dm-sans w-full">
+<div class="flex flex-col dm-sans w-full" data-aos="zoom-in-up">
     <div class="p-8 rounded-lg drop-shadow-md bg-white dm-sans">
         <div class="grid grid-cols-2">
             <div>
@@ -11,12 +11,11 @@
                     <p class="font-black">{{ vaga.localidade }}</p>
                 </div>
             </div>
-            <div class="absolute right-10 text-xl cursor-pointer">
-                <fa-icon *ngIf="salvo == false" (click)="salvarVaga()" [icon]="faHeart" class="text-primary"></fa-icon>
-                <fa-icon *ngIf="salvo == true" (click)="salvarVaga()" [icon]="faHeartCircleCheck" class="text-primary"></fa-icon>
+            <div class="absolute right-10 text-xl">
+                <fa-icon *ngIf="salvo == true" [icon]="faBookmark" class="text-primary"></fa-icon>
             </div>
         </div>
-        <div class="flex">
+        <!-- <div class="flex">
             <div class="w-1/2 pb-7">
                 <p class="pb-1">Disponibilidade</p>
                 <p class="font-black">{{ vaga.disponibilidade }}</p>
@@ -25,7 +24,7 @@
                 <p class="pb-1">Modalidade</p>
                 <p class="font-black text-primary" >{{ vaga.modalidade }}</p>
             </div>
-        </div>
+        </div> -->
         <button (click)="openSobreVaga()" class="w-full justify-center flex bg-second p-3 px-5 rounded font-black text-white">
             Mais detalhes
         </button>

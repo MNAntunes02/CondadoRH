@@ -9,15 +9,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SobreVagaComponent } from './dialog/sobre-vaga/sobre-vaga.component';
 import { CandidaturaEfetuadaComponent } from './dialog/candidatura-efetuada/candidatura-efetuada.component';
 import { DepoimentoComponent } from './components/depoimento/depoimento.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
-import { ColorSnackbarPipe } from './pipes/color-snackbar.pipe';
-import { SalvarVagaPipe } from './pipes/salvar-vaga.pipe';
 import { BlobSvgComponent } from './components/blob-svg/blob-svg.component';
+import { SobreServicoComponent } from './dialog/sobre-servico/sobre-servico.component';
+import { ServicosPipe } from './pipes/servicos.pipe';
 
 
 
@@ -28,9 +28,9 @@ import { BlobSvgComponent } from './components/blob-svg/blob-svg.component';
     CandidaturaEfetuadaComponent,
     DepoimentoComponent,
     SnackBarComponent,
-    ColorSnackbarPipe,
-    SalvarVagaPipe,
-    BlobSvgComponent
+    BlobSvgComponent,
+    SobreServicoComponent,
+    ServicosPipe
   ],
   imports: [
     CommonModule,
@@ -45,6 +45,9 @@ import { BlobSvgComponent } from './components/blob-svg/blob-svg.component';
     DepoimentoComponent,
     BlobSvgComponent,
     MaterialModule
+  ],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} }
   ]
 })
 export class SharedModule { }
