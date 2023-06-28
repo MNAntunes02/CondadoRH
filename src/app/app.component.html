@@ -1,5 +1,5 @@
 <section class="h-full scroll-smooth">
-  <header class="flex justify-between items-center w-full p-4 border-b-2 fixed lg:px-44 drop-shadow-lg bg-white z-50">
+  <header class="flex justify-between items-center w-full p-4 border-b-2 fixed lg:px-44 drop-shadow-lg bg-light z-50">
     <img src="./assets/logo/logo_sug.svg" alt="logo Condado RH" class="h-10 cursor-pointer" routerLink="">
     <div class="lg:hidden">
       <button mat-icon-button color="primary" (click)="openSidenav()" >
@@ -10,9 +10,9 @@
       <div class="dm-sans flex gap-12">
         <button class="px-2 rounded" routerLink="home" routerLinkActive="active">Inicio</button>
         <button class="px-2 rounded" routerLink="sobre-nos" routerLinkActive="active">Sobre Nós</button>
+        <button class="px-2 rounded" routerLink="servicos" routerLinkActive="active">Serviços</button>
         <button class="px-2 rounded" routerLink="vagas" routerLinkActive="active">Vagas</button>
         <!-- <button class="px-2 rounded" routerLink="clientes" routerLinkActive="active">Clientes</button> -->
-        <button class="px-2 rounded" routerLink="servicos" routerLinkActive="active">Serviços</button>
       </div>
     </div>
     <div class="hidden lg:block">
@@ -42,32 +42,17 @@
 
   <router-outlet></router-outlet>
 
-  <footer class="py-16 px-6 bg-primary flex flex-col lg:flex-row lg:justify-between lg:items-center lg:px-44 lg:py-8">
-    <div>
-      <img src="./assets/logo/logo_sug_negative.svg" alt="logo negativa Condado RH" class="h-10 cursor-pointer" routerLink="">
-      <div class="flex flex-col text-purple-50 dm-sans pt-8 pb-8 lg:pb-0 gap-3">
-        <span>©2023 Condado RH.</span>
-        <span>Todos os direitos reservados.</span>
-      </div>
-    </div>
-    <div class="flex gap-10">
-      <a target="_blank" href="https://www.instagram.com/condadorh/"><fa-icon class="text-purple-50 text-2xl" [icon]="faInstagram"></fa-icon></a>
-      <!-- <a target="_blank" href="https://pt-br.facebook.com/"><fa-icon class="text-purple-50 text-2xl" [icon]="faFacebook"></fa-icon></a> -->
-      <a target="_blank" href="https://www.linkedin.com/company/condado-rh/"><fa-icon class="text-purple-50 text-2xl" [icon]="faLinkedinIn"></fa-icon></a>
-    </div>
-  </footer>
-
 </section>
 
 
-<section  class="fixed h-full top-0 bg-white z-50 right-0 duration-200 ease-in translate-x-56"
+<section  class="fixed h-full top-0 bg-light z-50 right-0 duration-200 ease-in translate-x-56"
           [ngClass]="{'open-sidenav': sidenav}">
   <div class="flex flex-col justify-center items-center dm-sans p-16 gap-16 text-lg text-center">
     <button (click)="closeSidenav()" routerLinkActive="active" routerLink="home">Inicio</button>
     <button (click)="closeSidenav()" routerLinkActive="active" routerLink="sobre-nos">Sobre Nós</button>
+    <button (click)="closeSidenav()" routerLinkActive="active" routerLink="servicos">Serviços</button>
     <button (click)="closeSidenav()" routerLinkActive="active" routerLink="vagas">Vagas</button>
     <!-- <button (click)="closeSidenav()" routerLinkActive="active" routerLink="clientes">Clientes</button> -->
-    <button (click)="closeSidenav()" routerLinkActive="active" routerLink="servicos">Serviços</button>
   </div>
   <div *ngIf="currentName == null" (click)="closeSidenav()" routerLink="/login" class="w-full flex justify-center items-center absolute bottom-10 dm-sans text-lg gap-5 text-gray-400 cursor-pointer">
     <fa-icon  class="text-2xl" [icon]="faUserCircle"></fa-icon><span>Fazer login</span>
@@ -85,7 +70,7 @@
             class="w-full h-full bg-primary">
       </div>
     </div>
-    <span>{{primeiroNome + " " + resto[0]}}</span>
+    <span>{{primeiroNome}}</span>
   </div>
   <mat-menu #beforeMenu="matMenu" 
             xPosition="before"

@@ -18,6 +18,7 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { BlobSvgComponent } from './components/blob-svg/blob-svg.component';
 import { SobreServicoComponent } from './dialog/sobre-servico/sobre-servico.component';
 import { ServicosPipe } from './pipes/servicos.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -30,7 +31,8 @@ import { ServicosPipe } from './pipes/servicos.pipe';
     SnackBarComponent,
     BlobSvgComponent,
     SobreServicoComponent,
-    ServicosPipe
+    ServicosPipe,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { ServicosPipe } from './pipes/servicos.pipe';
     CandidaturaEfetuadaComponent,
     DepoimentoComponent,
     BlobSvgComponent,
-    MaterialModule
+    MaterialModule,
+    FooterComponent
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} }
