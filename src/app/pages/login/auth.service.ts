@@ -71,7 +71,8 @@ export class AuthService {
           nome:res.user?.displayName,
           email:res.user?.email,
           photoURL:res.user?.photoURL,
-          curriculoID:""
+          curriculoID:"",
+          vagas:[]
         })
       }
 
@@ -138,7 +139,8 @@ export class AuthService {
         nome:usuario.nome,
         email:usuario.email,
         photo: "",
-        curriculoID:""
+        curriculoID:"",
+        vagas:[]
       })
       
       //mandar email de verificação

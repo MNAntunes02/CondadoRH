@@ -44,6 +44,7 @@ export class VagaComponent {
       let user = this.auth.currentUser;
       let usuarios = collection(this.firestore,'usuarios')
 
+
       // cria id de referencia no firestore do usuario especifico
       const docRef = doc(usuarios, user?.uid);
       let arrayAntes = getDoc(docRef).then(async (data) => {
