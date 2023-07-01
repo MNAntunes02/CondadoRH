@@ -1,4 +1,8 @@
 {
+  "projects": {
+    "default": "condado-front",
+    "staging": "condado-rh"
+  },
   "targets": {
     "condado-front": {
       "hosting": {
@@ -6,9 +10,14 @@
           "condado-front"
         ]
       }
+    },
+    "condado-rh": {
+      "hosting": {
+        "condadorh": [
+          "condado-rh"
+        ]
+      }
     }
   },
-  "projects": {
-    "default": "condado-front"
-  }
+  "etags": {}
 }
