@@ -1,48 +1,54 @@
-<section class="w-full bg-gradient-to-tr from-primary from-10% to-second overflow-hidden relative pb-20 pt-20 border-b-2 border-primary h-[800px] lg:flex lg:flex-row-reverse lg:px-44 lg:justify-between lg:items-center">
-    <div class="relative w-full h-80 mt-24 lg:mt-0 lg:w-1/2 lg:h-full lg:flex lg:items-center">
-        <div class="w-full h-60 relative lg:h-3/5 lg:w-full">
-            <div class="w-full h-full bg-light rounded absolute img-bg z-20 lg:right-8 lg:top-8 right-4 top-4 floating-reverse"></div>
-            <div class="w-full h-full bg-light rounded absolute bg-opacity-30 lg:-right-8 lg:-top-8 -right-4 -top-4 z-10 floating"></div>
+<section class="w-full h-[800px] bg-gradient-to-tr from-primary from-10% to-second overflow-hidden border-b-2 border-primary relative">
+    <div class="container mx-auto w-full h-full relative pb-20 pt-20 lg:flex lg:flex-row-reverse lg:px-44 lg:justify-between lg:items-center">
+        <div class="relative w-full h-80 mt-24 lg:mt-0 lg:w-1/2 lg:h-full lg:flex lg:items-center">
+            <div class="w-full h-60 relative lg:h-3/5 lg:w-full">
+                <div class="w-full h-full bg-light rounded absolute img-bg z-20 lg:right-8 lg:top-8 right-4 top-4 floating-reverse"></div>
+                <div class="w-full h-full bg-light rounded absolute bg-opacity-30 lg:-right-8 lg:-top-8 -right-4 -top-4 z-10 floating"></div>
+            </div>
+        </div>
+        <div class="relative text-center flex flex-col px-6 lg:px-0 lg:text-start lg:w-1/2 z-30">
+            <h3 class="poppins font-bold text-3xl text-light">Novas oportunidades<br/> todos os dias</h3>
+            <span class="dm-sans mt-5 text-light">Garanta a sua!</span>
+            <div class="pt-14">
+                <button routerLink="/login" class="dm-sans px-8 py-4 rounded text-primary bg-light bg-opacity-80 font-semibold">Inscreva-se</button>
+            </div>
         </div>
     </div>
-    <div class="relative text-center flex flex-col px-6 lg:px-0 lg:text-start lg:w-1/2 z-30">
-        <h3 class="poppins font-bold text-3xl text-light">Novas oportunidades<br/> todos os dias</h3>
-        <span class="dm-sans mt-5 text-light">Garanta a sua!</span>
-        <div class="pt-14">
-            <button routerLink="/login" class="dm-sans px-8 py-4 rounded text-primary bg-light bg-opacity-80 font-semibold">Inscreva-se</button>
-        </div>
-    </div>
-    <app-blob-svg class="absolute -left-32 -top-32 lg:-left-72 lg:-top-72 w-full lg:w-2/3 -z-0" color="second"></app-blob-svg>
-    <app-blob-svg class="absolute -right-32 -bottom-32 lg:-right-96 lg:-bottom-96 w-full lg:w-2/3 -z-0" color="primary"></app-blob-svg>
+        <app-blob-svg class="absolute -left-32 -top-32 lg:-left-72 lg:-top-72 w-full lg:w-2/3 -z-0" color="second"></app-blob-svg>
+        <app-blob-svg class="absolute -right-32 -bottom-32 lg:-right-96 lg:-bottom-96 w-full lg:w-2/3 -z-0" color="primary"></app-blob-svg>
 </section>
 
 
 
-<section class="py-20 px-6 bg-light border-b-2 border-primary lg:px-44">
-    <h3 class="poppins font-bold text-3xl pb-12 lg:hidden text-dark">Depoimentos de<br/>quem já passou<br/>por aqui</h3>
-    <h3 class="poppins font-bold text-3xl pb-12 hidden lg:block text-center">Depoimentos de quem já <br/>passou por aqui</h3>
+<section class="bg-light border-b-2 border-primary">
+    <div class="container mx-auto py-20 px-6 lg:px-44">
+        <h3 class="poppins font-bold text-3xl pb-12 lg:hidden text-dark">Depoimentos de<br/>quem já passou<br/>por aqui</h3>
+        <h3 class="poppins font-bold text-3xl pb-12 hidden lg:block text-center">Depoimentos de quem já <br/>passou por aqui</h3>
         <app-depoimento></app-depoimento>
+    </div>
 </section>
 
 
 
-<section class="py-20 px-6 flex flex-col bg-light lg:flex-row lg:justify-between lg:items-center lg:px-44">
-    <div class="lg:w-1/3">
-        <h3 class="poppins font-bold text-3xl pb-12 text-dark">Entre em contato<br/>com a gente!</h3>
-        <p class="pt-4 dm-sans text-lg">
-            Entre em contato com a gente, queremos tirar suas dúvidas, ouvir suas críticas e sugestões.
-        </p>    
-        <a target="_blank" href="https://api.whatsapp.com/send?phone=5561983786667">
-            <button class="dm-sans mt-14 px-8 py-4 rounded text-purple-50 bg-primary gap-3 items-center font-medium">
-                <fa-icon class="pr-3 text-xl" [icon]="faWhatsapp"></fa-icon>
-                Entre em contato
-            </button>
-        </a>
-    </div>
-    <div class="pt-14 dm-sans text-lg lg:w-1/3 lg:pt-0">
-        <div class="py-4 items-center flex"><fa-icon class="pr-3 text-2xl text-primary" [icon]="faPhone"></fa-icon><span>61 98378-6667</span></div>
-        <div class="py-4 items-center flex"><fa-icon class="pr-3 text-2xl text-primary" [icon]="faLocationDot"></fa-icon><span>Brasília - DF</span></div>
-        <div class="py-4 items-center flex"><fa-icon class="pr-3 text-2xl text-primary" [icon]="faEnvelope"></fa-icon><span>condado.rh.dho@gmail.com</span></div>
+<section class="bg-light">
+    <div class="container mx-auto py-20 px-6 flex flex-col lg:flex-row lg:justify-between lg:items-center lg:px-44">
+        <div class="lg:w-1/3">
+            <h3 class="poppins font-bold text-3xl pb-12 text-dark">Entre em contato<br/>com a gente!</h3>
+            <p class="pt-4 dm-sans text-lg">
+                Entre em contato com a gente, queremos tirar suas dúvidas, ouvir suas críticas e sugestões.
+            </p>    
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=5561983786667">
+                <button class="dm-sans mt-14 px-8 py-4 rounded text-purple-50 bg-primary gap-3 items-center font-medium">
+                    <fa-icon class="pr-3 text-xl" [icon]="faWhatsapp"></fa-icon>
+                    Entre em contato
+                </button>
+            </a>
+        </div>
+        <div class="pt-14 dm-sans text-lg lg:w-1/3 lg:pt-0">
+            <div class="py-4 items-center flex"><fa-icon class="pr-3 text-2xl text-primary" [icon]="faPhone"></fa-icon><span>61 98378-6667</span></div>
+            <div class="py-4 items-center flex"><fa-icon class="pr-3 text-2xl text-primary" [icon]="faLocationDot"></fa-icon><span>Brasília - DF</span></div>
+            <div class="py-4 items-center flex"><fa-icon class="pr-3 text-2xl text-primary" [icon]="faEnvelope"></fa-icon><span>condado.rh.dho@gmail.com</span></div>
+        </div>
     </div>
 </section>
 

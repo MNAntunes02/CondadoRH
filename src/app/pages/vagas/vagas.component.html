@@ -1,20 +1,22 @@
-<section class="w-full bg-base overflow-hidden absolute  bg-light">
-    <section class="pb-20 pt-36 px-6 lg:px-44">
-        <h3 class="poppins font-bold text-3xl pb-4 text-dark">Vagas de emprego</h3>
-        <span class="pb-8 dm-sans">
-            Gosotu de uma vaga? Faça o <a routerLink="/login" class="font-bold text-primary">login</a> ou se <a routerLink="/cadastro" class="font-bold text-primary">cadastre</a> para se candidatar 
-        </span>
-        <div *ngIf="vagas$ | async ; else loading" class="w-full h-auto flex flex-col gap-5 py-8 lg:py-16 lg:grid lg:grid-cols-3">
-            <app-vaga *ngFor="let vaga of vagas$ | async" [vaga]="vaga" ></app-vaga>
-        </div>
-        <ng-template #loading>
-            <div class="w-full h-auto flex flex-col gap-5 py-8 lg:py-16 lg:grid lg:grid-cols-3">
-                <div class="box-loading"></div>
-                <div class="box-loading"></div>
-                <div class="box-loading"></div>
+<section class="w-full bg-light overflow-hidden absolute">
+    <div class="container mx-auto">
+        <section class="pb-20 pt-36 px-6 lg:px-44">
+            <h3 class="poppins font-bold text-3xl pb-4 text-dark">Vagas de emprego</h3>
+            <span class="pb-8 dm-sans">
+                Gosotu de uma vaga? Faça o <a routerLink="/login" class="font-bold text-primary">login</a> ou se <a routerLink="/cadastro" class="font-bold text-primary">cadastre</a> para se candidatar 
+            </span>
+            <div *ngIf="vagas$ | async ; else loading" class="w-full h-auto flex flex-col gap-5 py-8 lg:py-16 lg:grid lg:grid-cols-3">
+                <app-vaga *ngFor="let vaga of vagas$ | async" [vaga]="vaga" ></app-vaga>
             </div>
-        </ng-template>
-    </section>
+            <ng-template #loading>
+                <div class="w-full h-auto flex flex-col gap-5 py-8 lg:py-16 lg:grid lg:grid-cols-3">
+                    <div class="box-loading"></div>
+                    <div class="box-loading"></div>
+                    <div class="box-loading"></div>
+                </div>
+            </ng-template>
+        </section>
+    </div>
 
     <app-footer></app-footer>
 
